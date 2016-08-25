@@ -95,7 +95,7 @@ class Engine {
 
         // Register framework methods
         $methods = array(
-            'start','stop','route','halt','error','notFound',
+            'start','stop','route','halt','error','notFound', 'fetch',
             'render','redirect','etag','lastModified','json','jsonp'
         );
         foreach ($methods as $name) {
@@ -443,6 +443,17 @@ class Engine {
         else {
             $this->view()->render($file, $data);
         }
+    }
+
+    /**
+     * Renders a template without output
+     *
+     * @param string $file Template file
+     * @param array $data Template data
+     * @return mixed
+     */
+    public function _fetch($file, $data = null) {
+        return $this->view()->fetch($file, $data);
     }
 
     /**
